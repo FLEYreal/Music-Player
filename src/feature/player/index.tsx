@@ -376,8 +376,6 @@ export const ListPlayer = ({ tracks = testTracks, listInfo = testListInfo, prevB
     const allowPrevious = useRef(true);
     const allowScrollIntoView = useRef(true);
 
-    console.log("selectedTrack: ", selectedTrack)
-
     const play = (resume = true) => {
         setIsPlaying(true);
         playCallback && playCallback(selectedTrack, resume);

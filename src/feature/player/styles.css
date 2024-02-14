@@ -10,14 +10,14 @@ div.list-player *, :before, :after {
   font-feature-settings: normal;
   font-variation-settings: normal;
 
-  --lp-gap-1: .25rem;
-  --lp-gap-2: .5rem;
+  --lp-gap-1: .3rem;
+  --lp-gap-2: .6rem;
   --lp-gap-var-1: 3.5%;
   --lp-gap-var-2: 6%;
-  --lp-pad-1: .3rem;
-  --lp-pad-2: .6rem;
-  --lp-text-op-2: .6;
-  --lp-text-color: #ffffffde;
+  --lp-pad-1: .6rem;
+  --lp-pad-2: 1rem;
+  --lp-text-op-2: .75;
+  --lp-text-color: #ffded4;
 
   font-family: Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;
   line-height: 1.5;
@@ -30,14 +30,14 @@ div.list-player *, :before, :after {
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-  border-color: #e5e7eb;
+  border-color: #ffdcd1;
 }
 
 /* SCROLLBARS ----------------- */
 /* Firefox */
 div.list-player * {
   scrollbar-width: thin;
-  scrollbar-color: #ffffff44 transparent;
+  scrollbar-color: rgb(29, 22, 21) transparent;
 }
 
 /* Chrome, Edge, and Safari */
@@ -52,7 +52,7 @@ div.list-player *::-webkit-scrollbar-track {
 
 div.list-player *::-webkit-scrollbar-thumb {
   background-color: #ffffff44;
-  border-radius: 10px;
+  border-radius: 16px;
   border: 0px solid #ffffff44;
 }
 
@@ -63,7 +63,7 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
 @media (prefers-color-scheme: dark) {
   div.list-player *::-webkit-scrollbar-thumb {
     background-color: #00000028;
-    border-radius: 10px;
+    border-radius: 16px;
     border: 0px solid #00000028;
   }
   
@@ -152,7 +152,7 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
   max-height: 100%;
   overflow: hidden;
   background-color: rgb(0 0 0 / 0.25);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   transition-property: max-height, max-width;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
@@ -160,7 +160,6 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
 
 .list-player .list-header {
   --lp-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  box-shadow: var(--lp-ring-offset-shadow, 0 0 #0000), var(--lp-ring-shadow, 0 0 #0000), var(--lp-shadow);
   position: relative;
   width: 100%;
   min-height: 5.75rem;
@@ -193,6 +192,7 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
 }
 
 .list-player div.track {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -201,7 +201,7 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
   padding-top: 5px;
   padding-bottom: 7px;
   margin-right: 0.3rem;
-  border-radius: 0.4rem;
+  border-radius: 0.6rem;
 }
 
 .list-player div.track:hover, .list-player div.track.selected {
@@ -222,7 +222,7 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
 
 .list-player span.number {
   font-size: large;
-  font-weight: 600;
+  font-weight: 500;
   opacity: var(--lp-text-op-2);
 }
 
@@ -313,15 +313,6 @@ div.list-player *::-webkit-scrollbar-thumb:hover {
   overflow: hidden;
 }
 
-/* THIS IS IMPORTANT!!!
-This allows the list columns (title, artist, and album) 
-to adjust width according to parent container width.
-A fixed width is necessary to force flex container not to 
-move the left edges of the individual 'cells'. Percent 
-doesnt work but relative units do. However, we need the
-relative units to change according to parent container size
-instead of viewport. Fallbacks are implemented above this 
-block */
 @container info (min-width: 20px) {
   .list-player .main-info-cont {
     min-width: 28cqw!important;
@@ -372,7 +363,7 @@ block */
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 700ms;
@@ -442,21 +433,17 @@ block */
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 13.9rem/* 222.4px */;
-  max-height: 30rem/* 480px */;
-  padding-bottom: 5rem/* 80px */;
-  padding-left: 0.75rem/* 12px */;
-  padding-right: 0.75rem/* 12px */;
-  padding-top: 0.5rem/* 8px */;
+  min-width: 13.9rem;
+  max-height: 30rem;
+  padding-bottom: 5rem;
+  padding-left: 1.25rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 500ms;
   animation: fadeIn 0.6s ease-in-out;
 }
-
-/* div.lt-info-title {
-
-} */
 
 .list-player h1.lt-info-title-h1 {
   font-size: 2rem;
@@ -475,7 +462,7 @@ block */
 
 .list-player .lt-info-stats .text.pure {
   font-size: large;
-  font-weight: 600;
+  font-weight: 500;
   opacity: var(--lp-text-op-2);
 }
 
@@ -573,14 +560,14 @@ block */
 .list-player span.new {
   color: rgba(161, 204, 165, 0.8);
   padding: 0px 3px 0px 3px;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 2px solid rgba(161, 204, 165, 0.8);
 }
 
 .list-player span.explicit {
   color: rgba(255, 255, 255, 0.7);
   padding: 0px 3px 0px 3px;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 2px solid rgba(255, 255, 255, 0.7);
 }
 /* ---------------------------- */
@@ -603,10 +590,9 @@ block */
 
 .list-player div.lt-info-img-cont {
   --lp-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  box-shadow: var(--lp-ring-offset-shadow, 0 0 #0000), var(--lp-ring-shadow, 0 0 #0000), var(--lp-shadow);
   height: fit-content;
   max-height: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -620,11 +606,10 @@ block */
 .list-player div.lt-info-art-placeholder-cont {
   --lp-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-border-opacity: 1;
-  box-shadow: var(--lp-ring-offset-shadow, 0 0 #0000), var(--lp-ring-shadow, 0 0 #0000), var(--lp-shadow);
   height: fit-content;
   max-height: 100%;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   border-width: 2px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
